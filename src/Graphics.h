@@ -3,31 +3,30 @@
 
 #include <string>
 #include <vector>
-#include <opencv2/core.hpp>
+
 #include "TrafficObject.h"
+
+#include "MyApp.hpp"
 
 class Graphics
 {
 public:
-    // constructor / desctructor
-
-    // getters / setters
-    void setBgFilename(std::string filename) { _bgFilename = filename; }
-    void setTrafficObjects(std::vector<std::shared_ptr<TrafficObject>> &trafficObjects) { _trafficObjects = trafficObjects; };
-
-    // typical behaviour methods
-    void simulate();
+	// constructor / desctructor
+	
+	// getters / setters
+	void setBgFilename( std::string filename ){ _bgFilename = filename; }
+	
+	const std::string &getBgFilename();
+	
+	// typical behaviour methods
+	void setTrafficObjects( std::vector<std::shared_ptr<TrafficObject>> &trafficObjects ){ _trafficObjects = trafficObjects; };
+	
+	std::vector<spot> getTrafficObjectsAsSpots();
 
 private:
-    // typical behaviour methods
-    void loadBackgroundImg();
-    void drawTrafficObjects();
-
-    // member variables
-    std::vector<std::shared_ptr<TrafficObject>> _trafficObjects;
-    std::string _bgFilename;
-    std::string _windowName;
-    std::vector<cv::Mat> _images;
+	// member variables
+	std::vector<std::shared_ptr<TrafficObject>> _trafficObjects;
+	std::string _bgFilename;
 };
 
 #endif
